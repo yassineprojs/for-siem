@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ey-cs-monitor"
+version = "0.1.0"
+description = "Lightweight CrowdStrike Activity Dashboard monitor with mobile notifications"
+readme = "README.md"
+authors = [{ name = "EY SOC" }]
+requires-python = ">=3.9"
+dependencies = [
+  "requests>=2.31",
+  "pydantic>=2.8",
+  "pyyaml>=6.0.1",
+  "tenacity>=8.3",
+  "colorlog>=6.8",
+]
+
+[project.scripts]
+ey-cs-monitor = "ey_cs_monitor.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ey_cs_monitor*"]

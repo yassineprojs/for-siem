@@ -1,0 +1,44 @@
+# EY CrowdStrike New Detections Monitor - Example Config
+
+# Preferred mode. 'stream' uses Falcon Streaming API (requires enabling Falcon SIEM Connector or Event Streams). 'poll' falls back to REST queries.
+mode: stream # stream | poll
+
+# If mode=poll, how often to check the count (seconds). Keep modest to avoid rate limits.
+poll_interval_seconds: 60
+
+# Optional: if your environment requires a specific base URL (e.g., us-1, eu-1)
+# Valid values: https://api.crowdstrike.com, https://api.us-2.crowdstrike.com, https://api.eu-1.crowdstrike.com, etc.
+cs_base_url: https://api.crowdstrike.com
+
+# Optional hard link to the Activity dashboard detections page for convenience in alerts
+new_detections_url: https://falcon.crowdstrike.com/activity/overview
+
+# Quiet hours: suppress notification sound in this window (still deliver silently). 24h format, local time.
+quiet_hours:
+  start: "02:00"
+  end: "04:00"
+
+# Notifiers and subscribers. Enable the channels you use.
+notifiers:
+  slack:
+    enabled: true
+    channel_webhook_env: SLACK_WEBHOOK_URL
+    recipients:
+      - "#soc-analysts"
+  teams:
+    enabled: false
+    channel_webhook_env: TEAMS_WEBHOOK_URL
+    recipients:
+      - "SOC Alerts"
+  sms:
+    enabled: false
+    twilio_from_env: TWILIO_FROM
+    recipients:
+      - "+15551234567"
+  pushover:
+    enabled: false
+    recipients:
+      - "PUSHOVER_USER" # env var name per user
+
+# Local audit log path
+log_path: ./logs/audit.log.jsonl

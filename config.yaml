@@ -1,0 +1,6 @@
+﻿mode: poll
+poll_interval_seconds: 1
+notifiers:
+  slack:
+    enabled: false
+log_path: ./logs/audit.log.jsonl

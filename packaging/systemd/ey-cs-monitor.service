@@ -1,0 +1,16 @@
+[Unit]
+Description=EY CrowdStrike New Detections Monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ey
+Environment=CS_CLIENT_ID=changeme
+Environment=CS_CLIENT_SECRET=changeme
+WorkingDirectory=/opt/ey-cs-monitor
+ExecStart=/usr/local/bin/ey-cs-monitor --config /opt/ey-cs-monitor/config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
