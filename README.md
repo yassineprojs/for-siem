@@ -1,4 +1,4 @@
-# EY CrowdStrike New Detections Monitor
+# CrowdStrike New Detections Monitor
 
 A lightweight, secure tool that watches CrowdStrike's Activity Dashboard for increases in the "New detections" counter and notifies analysts via mobile-friendly channels (Slack/Teams/SMS/Pushover). Designed for SOC use with minimal footprint and safe defaults.
 
@@ -86,6 +86,4 @@ pip install -e .
 pytest
 ```
 
-## License
 
-Internal EY use only.
